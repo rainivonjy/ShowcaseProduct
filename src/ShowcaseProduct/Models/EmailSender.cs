@@ -3,33 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-
+using MailKit.Net.Smtp;
+using MimeKit;
+using MailKit.Security;
 namespace ShowcaseProduct.Models
 {
     public class EmailSender : IEmailService
     {
-        Task IEmailService.SendAsync(string to, string subject, string body)
+        public async Task SendEmailAsync(string to, string subject, string body)
         {
-            // Plug in your email service here to send an email.
-            var smtp = new System.Net.Mail.SmtpClient();
-            var mail = new System.Net.Mail.MailMessage();
+            var emailMessage = new MimeMessage();
 
-            mail.IsBodyHtml = true;
-            mail.From = new System.Net.Mail.MailAddress("prova@hln.it", "Prova Mail");
-            mail.To.Add(to);
-            mail.Subject = subject;
-            mail.Body = body;
+            emailMessage.From.Add(new MailboxAddress("Joe Bloggs", "jbloggs@example.com"));
+            emailMessage.To.Add(new MailboxAddress("", to));
+            emailMessage.Subject = subject;
+            emailMessage.Body = new TextPart("plain") { Text = body };
 
-            //smtp = new SmtpClient("ServerName");
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("ntsoanyaina@gmail.com", "vonjy007");
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.EnableSsl = true;
-            smtp.Timeout = 1000;
-            var t = Task.Run(() => smtp.SendAsync(mail, null));
-            return t;
-    
+            using (var client = new SmtpClient())
+            {
+                client.LocalDomain = "ntsoanyaina@gmail.com";
+                await client.ConnectAsync("smtp.relay.uri", 25, SecureSocketOptions.None).ConfigureAwait(false);
+                await client.SendAsync(emailMessage).ConfigureAwait(false);
+                await client.DisconnectAsync(true).ConfigureAwait(false);
+            }
         }
     }
 }
