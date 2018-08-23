@@ -36,10 +36,9 @@ namespace ShowcaseProduct
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            //defautl  services.AddApplicationInsightsTelemetry(Configuration);
+          services.AddApplicationInsightsTelemetry(Configuration); //defautl
 
-            //defautlservices.AddMvc();
-            services.AddDbContext<ApplicationDbContext>(options =>
+             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -84,7 +83,8 @@ namespace ShowcaseProduct
             // Add application services.
             services.AddTransient<IEmailService, EmailSender>();
 
-            services.AddMvc();
+            services.AddMvc(); // default
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
