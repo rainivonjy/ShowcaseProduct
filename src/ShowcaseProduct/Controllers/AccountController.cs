@@ -18,9 +18,22 @@ namespace ShowcaseProduct.Controllers
         ApplicationDbContext dbcontext;
         private SignInManager<ApplicationUser> _signManager;
         private UserManager<ApplicationUser> _userManager;
+        private EmailSender emailSender;
         public AccountController(ApplicationDbContext context)
         {
             dbcontext = context;
+        }
+        //
+        // GET: /Account/ConfirmEmail
+        public async Task<ActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return View("Error");
+            }
+            ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
         // GET Register
         public IActionResult Register()
@@ -66,20 +79,20 @@ namespace ShowcaseProduct.Controllers
                     // Send an email with this link
                     string code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                    var callbackUrl = Url.Page(
-                "/Account/ConfirmEmail",
-                pageHandler: null,
-                values: new { userId = user.Id, code = code },
-                protocol: Request.Scheme);
-
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await _userManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        string callbackUrl = Url.Action("ConfirmEmail",
+                 "Account", new
+                 {
+                     userid = user.Id,
+                     token = code
+                 },
+                  protocol: HttpContext.Request.Scheme);
+                   await emailSender.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     //Assign Role to user Here   
-                    await this._userManager.AddToRoleAsync(user.Id, model.UserRoles);
+                    await this._userManager.AddToRoleAsync(user, model.UserRoles);
                     //Ends Here 
                     return RedirectToAction("Index", "Users");
                 }
-                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+                ViewBag.Name = new SelectList(dbcontext.Roles.Where(u => !u.Name.Contains("Admin"))
                                           .ToList(), "Name", "Name");
                // AddErrors(result);
             }
