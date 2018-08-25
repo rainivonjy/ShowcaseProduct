@@ -25,7 +25,8 @@
     "Microsoft.AspNetCore.Identity": "1.0.1",
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.4",
-    "MailKit": "1.10.2"
+    "MailKit": "1.10.2",
+    "Microsoft.AspNetCore.Authentication.Facebook": "1.0.1"
   },
 
   "tools": {

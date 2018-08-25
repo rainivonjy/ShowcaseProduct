@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "3b1da0b56e62c8751a25260cad4511cb0bd9ddcf"
+    "signature": "c9fd924520e3675fc24d328bbe8020142b3b8cd6"
   },
   "compilationOptions": {
     "defines": [
@@ -34,7 +34,8 @@
           "Microsoft.AspNetCore.Identity": "1.0.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "1.0.4",
-          "MailKit": "1.10.2"
+          "MailKit": "1.10.2",
+          "Microsoft.AspNetCore.Authentication.Facebook": "1.0.1"
         },
         "runtime": {
           "ShowcaseProduct.dll": {}
@@ -165,6 +166,30 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.AspNetCore.Authentication.Cookies.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Facebook/1.0.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.OAuth/1.0.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication": "1.0.1",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Runtime.Serialization.Primitives": "4.1.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Authentication.OAuth.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Authentication.OAuth.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authorization/1.0.0": {
@@ -3743,6 +3768,16 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-oYSBbdX8x139zt/8ScqHaWIhm+UTTKbwTUUUjgz7D+RFK9Gi6mf/gpRBFSYIy77TPzWEePopp1HqzlIbVKpW7Q=="
+    },
+    "Microsoft.AspNetCore.Authentication.Facebook/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ucHmS71+lO8Bd1mJUKVIs9Hei9t/oJ2hRzQbnUYa7zK6eVngvgVkEY2GZn2VsO/BZg5ov0Xg9hWbcgCBCgXAZA=="
+    },
+    "Microsoft.AspNetCore.Authentication.OAuth/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Gh8qUNq78oiBBEdK7oxhl3tGqB7OWDNfkDJZqU/cQrzSqBLt035+TXVx4V62wO7aG0rwmrOgBuhV4y29K5OFPg=="
     },
     "Microsoft.AspNetCore.Authorization/1.0.0": {
       "type": "package",

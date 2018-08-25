@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 using ShowcaseProduct.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Identity;
+
 namespace ShowcaseProduct
 {
     public class Startup
@@ -30,13 +33,17 @@ namespace ShowcaseProduct
             Configuration = builder.Build();
         }
 
+
+       
+
+
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-          services.AddApplicationInsightsTelemetry(Configuration); //defautl
+            services.AddApplicationInsightsTelemetry(Configuration); //defautl
 
              services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -44,13 +51,6 @@ namespace ShowcaseProduct
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddAuthentication().AddFacebook(facebookOptions =>
-            {
-                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-            })
-
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -101,7 +101,7 @@ namespace ShowcaseProduct
             loggerFactory.AddDebug();
 
             app.UseApplicationInsightsRequestTelemetry();
-
+          
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -113,6 +113,20 @@ namespace ShowcaseProduct
             }
 
             app.UseApplicationInsightsExceptionTelemetry();
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationScheme = "ApplicationCookie",
+                AutomaticAuthenticate = true
+            });
+
+            app.UseFacebookAuthentication(new FacebookOptions
+            {
+                AuthenticationScheme = "Facebook",
+                AppId = "325309374709141",
+                AppSecret = "89d4584f99acc154af4a9514782a48db",
+                SignInScheme = "ApplicationCookie"
+            });
 
             app.UseStaticFiles();
 

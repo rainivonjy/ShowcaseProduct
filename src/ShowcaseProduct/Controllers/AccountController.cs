@@ -8,6 +8,7 @@ using ShowcaseProduct.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using ShowcaseProduct.Models.Account;
+using Microsoft.AspNetCore.Http.Authentication;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -34,6 +35,37 @@ namespace ShowcaseProduct.Controllers
             ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
             var result = await _userManager.ConfirmEmailAsync(user, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+
+        public IActionResult FacebookLogin()
+        {
+            var authProperties = new AuthenticationProperties
+            {
+                RedirectUri = Url.Action("Index", "Home")
+            };
+            return Challenge(authProperties, "Facebook");
+        }
+
+        public async Task<IActionResult> ExternalLoginCallback()
+        {
+            ExternalLoginInfo info = await _signManager.GetExternalLoginInfoAsync();
+            //info.Principal //the IPrincipal with the claims from facebook
+            //info.ProviderKey //an unique identifier from Facebook for the user that just signed in
+            //info.LoginProvider //a string with the external login provider name, in this case Facebook
+
+            //to sign the user in if there's a local account associated to the login provider
+            //var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false);            
+            //result.Succeeded will be false if there's no local associated account 
+
+            //to associate a local user account to an external login provider
+            //await _userInManager.AddLoginAsync(aUserYoullHaveToCreate, info);        
+            return Redirect("~/");
+        }
+
+        // GET Login
+        public IActionResult Login()
+        {
+            return View();
         }
         // GET Register
         public IActionResult Register()
@@ -99,9 +131,6 @@ namespace ShowcaseProduct.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
-
-
-
         }
     }
 }
