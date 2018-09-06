@@ -225,6 +225,7 @@ C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Ap
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\EmailSender.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\IEmailService.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Account\Applicatif.cs
+C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Account\ApplicationRole.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Account\LoginViewModel.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Account\RegisterViewModel.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Account\Roles.cs

@@ -20,20 +20,26 @@ namespace ShowcaseProduct.Controllers
         private SignInManager<ApplicationUser> _signManager;
         private UserManager<ApplicationUser> _userManager;
         private EmailSender emailSender;
-        public AccountController(ApplicationDbContext context)
+        private  RoleManager<ApplicationRole> roleManager;
+        public AccountController(ApplicationDbContext context, SignInManager<ApplicationUser> _signManager,
+           UserManager<ApplicationUser> _userManager, RoleManager<ApplicationRole> roleManager)
         {
             dbcontext = context;
+            this._signManager = _signManager;
+            this._userManager = _userManager;
+            this.roleManager = roleManager;
+            this.emailSender = new EmailSender();
         }
         //
         // GET: /Account/ConfirmEmail
-        public async Task<ActionResult> ConfirmEmail(string userId, string code)
+        public async Task<ActionResult> ConfirmEmail(string userId, string token)
         {
-            if (userId == null || code == null)
+            if (userId == null || token == null)
             {
                 return View("Error");
             }
             ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
-            var result = await _userManager.ConfirmEmailAsync(user, code);
+            var result = await _userManager.ConfirmEmailAsync(user, token);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
@@ -62,16 +68,44 @@ namespace ShowcaseProduct.Controllers
             return Redirect("~/");
         }
 
+
         // GET Login
         public IActionResult Login()
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddRole(ApplicationRole model)
+        {
+            if (ModelState.IsValid)
+            {
+                var role = new ApplicationRole();
+                role.Name = model.Name;
+                
+                await roleManager.CreateAsync(role);
+                return RedirectToAction("ListRole", "Account");
+            }
+            return View();
+        }
+
+        // GET AddRole
+        public IActionResult AddRole()
+        {
+            return View();
+        }
+        // GET AddRole
+        public IActionResult ListRole()
+        {
+            ViewData["allroles"] = dbcontext.Roles;
+            return View();
+        }
+
+
         // GET Register
         public IActionResult Register()
         {
-            var test = dbcontext.Roles.FirstOrDefault();
-            ViewBag.Name = new SelectList(dbcontext.Roles.Where(u => !u.Name.Contains("Admin"))
+            ViewBag.Name = new SelectList(dbcontext.Roles
                                             .ToList(), "Name", "Name");
             return View();
         }
@@ -79,26 +113,6 @@ namespace ShowcaseProduct.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            /*if (ModelState.IsValid)
-            {
-                var user = new User { UserName = model.Username };
-                var result = await _userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
-                {
-                    await _signManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error.Description);
-                    }
-                }
-            }
-            return View();*/
-
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
@@ -122,9 +136,9 @@ namespace ShowcaseProduct.Controllers
                     //Assign Role to user Here   
                     await this._userManager.AddToRoleAsync(user, model.UserRoles);
                     //Ends Here 
-                    return RedirectToAction("Index", "Users");
+                    return RedirectToAction("Index", "Home");
                 }
-                ViewBag.Name = new SelectList(dbcontext.Roles.Where(u => !u.Name.Contains("Admin"))
+                ViewBag.Name = new SelectList(dbcontext.Roles
                                           .ToList(), "Name", "Name");
                // AddErrors(result);
             }

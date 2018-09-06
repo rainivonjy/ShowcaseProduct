@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Identity;
+using ShowcaseProduct.Models.Account;
 
 namespace ShowcaseProduct
 {
@@ -48,9 +49,21 @@ namespace ShowcaseProduct
              services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+
+
+          /*  services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = false;
+            });*/
+
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+
+
+
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -58,7 +71,7 @@ namespace ShowcaseProduct
                 //options.Password.RequireDigit = true;
                 //options.Password.RequiredLength = 8;
                 options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = true;
+                options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
                 //options.Password.RequiredUniqueChars = 6;
 
@@ -99,7 +112,7 @@ namespace ShowcaseProduct
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+            
             app.UseApplicationInsightsRequestTelemetry();
           
             if (env.IsDevelopment())
@@ -111,12 +124,14 @@ namespace ShowcaseProduct
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseIdentity();
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
-                AuthenticationScheme = "ApplicationCookie",
+           
+            AutomaticChallenge = true,
+            AuthenticationScheme = "ApplicationCookie",
                 AutomaticAuthenticate = true
             });
 
@@ -129,6 +144,9 @@ namespace ShowcaseProduct
             });
 
             app.UseStaticFiles();
+
+            
+
 
             app.UseMvc(routes =>
             {

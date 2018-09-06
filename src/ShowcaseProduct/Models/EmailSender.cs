@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MimeKit;
 using MailKit.Security;
+using MailKit.Net.Imap;
+
 namespace ShowcaseProduct.Models
 {
     public class EmailSender : IEmailService
@@ -14,18 +16,40 @@ namespace ShowcaseProduct.Models
         {
             var emailMessage = new MimeMessage();
 
-            emailMessage.From.Add(new MailboxAddress("Joe Bloggs", "jbloggs@example.com"));
-            emailMessage.To.Add(new MailboxAddress("", to));
+            emailMessage.From.Add(new MailboxAddress("Joe Bloggs", "ntsoanyaina@gmail.com"));
+            emailMessage.To.Add(new MailboxAddress("ntsoanyaina@gmail.com", "ntsoanyaina@gmail.com"));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart("plain") { Text = body };
 
+            var credentials = new NetworkCredential("ntsoanyaina@gmail.com", "vonjy007");
+
+           /* var client = new SmtpClient(smtpEmail.smtp)
+            {
+                Port = 587,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                EnableSsl = true,
+                Credentials = credentials
+            };*/
+
+
             using (var client = new SmtpClient())
             {
-                client.LocalDomain = "ntsoanyaina@gmail.com";
-                await client.ConnectAsync("smtp.relay.uri", 25, SecureSocketOptions.None).ConfigureAwait(false);
-                await client.SendAsync(emailMessage).ConfigureAwait(false);
-                await client.DisconnectAsync(true).ConfigureAwait(false);
+                client.Connect("smtp.gmail.com", 587);
+
+
+                // Note: since we don't have an OAuth2 token, disable
+                // the XOAUTH2 authentication mechanism.
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
+
+                // Note: only needed if the SMTP server requires authentication
+               client.Authenticate("ntsoanyaina@gmail.com", "vonjy007");
+
+                
+                client.Send(emailMessage);
+                client.Disconnect(true);
             }
+
         }
     }
 }
