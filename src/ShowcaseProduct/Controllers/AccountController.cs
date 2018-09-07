@@ -132,7 +132,7 @@ namespace ShowcaseProduct.Controllers
                      token = code
                  },
                   protocol: HttpContext.Request.Scheme);
-                   await emailSender.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                   await emailSender.SendEmailAsync(model.UserName,model.Email, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     //Assign Role to user Here   
                     await this._userManager.AddToRoleAsync(user, model.UserRoles);
                     //Ends Here 

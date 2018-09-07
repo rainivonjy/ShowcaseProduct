@@ -220,6 +220,7 @@ C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Program.c
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Startup.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controllers\AccountController.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controllers\HomeController.cs
+C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\AllConstants.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\ApplicationDbContext.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\ApplicationUser.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\EmailSender.cs
