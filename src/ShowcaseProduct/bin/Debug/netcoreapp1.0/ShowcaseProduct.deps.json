@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "c9fd924520e3675fc24d328bbe8020142b3b8cd6"
+    "signature": "7b35be3f2e1522c626e441394c2f85d9cda17751"
   },
   "compilationOptions": {
     "defines": [
@@ -35,7 +35,9 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "1.0.4",
           "MailKit": "1.10.2",
-          "Microsoft.AspNetCore.Authentication.Facebook": "1.0.1"
+          "Microsoft.AspNetCore.Authentication.Facebook": "1.0.1",
+          "Microsoft.EntityFrameworkCore.Tools": "1.1.0-preview4-final",
+          "Microsoft.EntityFrameworkCore.Design": "1.0.1"
         },
         "runtime": {
           "ShowcaseProduct.dll": {}
@@ -972,6 +974,22 @@
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.dll": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.Design/1.0.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.1",
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.1",
+          "System.AppContext": "4.1.0",
+          "System.Collections.NonGeneric": "4.0.1",
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem": "4.0.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Design.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Design.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/1.0.4": {
         "dependencies": {
           "Microsoft.CSharp": "4.0.1",
@@ -987,6 +1005,17 @@
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.Relational.Design/1.0.1": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.4"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.SqlServer/1.0.4": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "1.0.4",
@@ -998,6 +1027,11 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "1.0.1"
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/1.0.2": {
@@ -4014,15 +4048,30 @@
       "serviceable": true,
       "sha512": "sha512-pcPVgeF9gqZlX7KE2/xo6PrTZkrto5LZdZDOyrBLvQ3eBQQ5JLuVMNJFHf59z9xPRhHPsws5Ynf6FGRPuxdb7g=="
     },
+    "Microsoft.EntityFrameworkCore.Design/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a2vn4bl3C6hJqK4Mm7mz4iuHaE2KdBSav3EKyVlgE2qofxLnw03Hf2nB3LvIQgMw40RodV3tp3o3E+x6jZKTSA=="
+    },
     "Microsoft.EntityFrameworkCore.Relational/1.0.4": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-QTZznchHeHszx9PEmutkcbAHQu1FLmV+5Pba+lPKUGRsrFsO846pXmMxlbe2wjDPedxuMqr1x8cO9JK99oN/uQ=="
     },
+    "Microsoft.EntityFrameworkCore.Relational.Design/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GBN8QmrqcQo4WB4rKsPfzVaVKeHN6GSRF+eOTZWqK1vJ7T5kpG4PtxOkqOw8aZDRJbehAleD+dHYBOkngFzafA=="
+    },
     "Microsoft.EntityFrameworkCore.SqlServer/1.0.4": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Waq7+hlebCuvdaHwthP+mekaYjkswJ/mbwqdgeokOcWK1SYDHlP2jH/GXcKcLCZwnthnik7RrkS3iGc/rNveUg=="
+    },
+    "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n7g5JB4YxLYCl32XCmjXEHDF/9J/DSeNYGjxGAzG1xUi/IXOCWd6T3XyEnDXsub7iFDvpB2VgUlh6wHDqmTZgA=="
     },
     "Microsoft.Extensions.Caching.Abstractions/1.0.2": {
       "type": "package",
