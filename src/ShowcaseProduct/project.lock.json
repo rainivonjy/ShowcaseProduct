@@ -1163,10 +1163,10 @@
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational.Design/1.0.1": {
+      "Microsoft.EntityFrameworkCore.Relational.Design/1.0.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "1.0.1"
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.4"
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
@@ -1187,6 +1187,19 @@
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.SqlServer.Design/1.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.0.4"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final": {
@@ -5270,12 +5283,12 @@
         "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.xml"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Relational.Design/1.0.1": {
-      "sha512": "GBN8QmrqcQo4WB4rKsPfzVaVKeHN6GSRF+eOTZWqK1vJ7T5kpG4PtxOkqOw8aZDRJbehAleD+dHYBOkngFzafA==",
+    "Microsoft.EntityFrameworkCore.Relational.Design/1.0.4": {
+      "sha512": "KaIV9/0k0tRSesEbhKdjOJNjwPZLGhVzwhN3gf6U3xHLgRGYoGur8gSWd/Tzd86gMctFS26ofdk4+NP+H2lHNg==",
       "type": "package",
-      "path": "Microsoft.EntityFrameworkCore.Relational.Design/1.0.1",
+      "path": "Microsoft.EntityFrameworkCore.Relational.Design/1.0.4",
       "files": [
-        "Microsoft.EntityFrameworkCore.Relational.Design.1.0.1.nupkg.sha512",
+        "Microsoft.EntityFrameworkCore.Relational.Design.1.0.4.nupkg.sha512",
         "Microsoft.EntityFrameworkCore.Relational.Design.nuspec",
         "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll",
         "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.xml",
@@ -5294,6 +5307,19 @@
         "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.xml",
         "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.dll",
         "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.xml"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.SqlServer.Design/1.0.4": {
+      "sha512": "CSZoo+9iuoBIYN/Yl8/1ggJgEVm/T8feJSjSBpBgej18S8lQt0kn43F6RBPJzHNMZeGutuR2V/gi6t++b8LUaA==",
+      "type": "package",
+      "path": "Microsoft.EntityFrameworkCore.SqlServer.Design/1.0.4",
+      "files": [
+        "Microsoft.EntityFrameworkCore.SqlServer.Design.1.0.4.nupkg.sha512",
+        "Microsoft.EntityFrameworkCore.SqlServer.Design.nuspec",
+        "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.dll",
+        "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.xml",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.xml"
       ]
     },
     "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final": {
@@ -11035,6 +11061,7 @@
       "Microsoft.AspNetCore.StaticFiles >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 1.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 1.0.4",
+      "Microsoft.EntityFrameworkCore.SqlServer.Design >= 1.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 1.1.0-preview4-final",
       "Microsoft.Extensions.Configuration.EnvironmentVariables >= 1.0.0",
       "Microsoft.Extensions.Configuration.Json >= 1.0.0",

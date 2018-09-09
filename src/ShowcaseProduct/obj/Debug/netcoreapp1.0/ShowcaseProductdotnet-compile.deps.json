@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0/",
-    "signature": "a177ad90cad8cf0ae0db55e1b6070654cd9fdd9d"
+    "signature": "ee9f24e1db8c920514603556398838854cc43d44"
   },
   "compilationOptions": {
     "defines": [
@@ -37,7 +37,8 @@
           "MailKit": "1.10.2",
           "Microsoft.AspNetCore.Authentication.Facebook": "1.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "1.1.0-preview4-final",
-          "Microsoft.EntityFrameworkCore.Design": "1.0.1"
+          "Microsoft.EntityFrameworkCore.Design": "1.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.0.4"
         },
         "compile": {
           "ShowcaseProduct.dll": {}
@@ -840,7 +841,7 @@
       "Microsoft.EntityFrameworkCore.Design/1.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.1",
-          "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.1",
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.4",
           "System.AppContext": "4.1.0",
           "System.Collections.NonGeneric": "4.0.1",
           "System.IO": "4.1.0",
@@ -862,7 +863,7 @@
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational.Design/1.0.1": {
+      "Microsoft.EntityFrameworkCore.Relational.Design/1.0.4": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "1.0.4"
         },
@@ -878,6 +879,15 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.SqlServer.Design/1.0.4": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.0.4"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final": {
@@ -3035,7 +3045,8 @@
           "MailKit": "1.10.2",
           "Microsoft.AspNetCore.Authentication.Facebook": "1.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "1.1.0-preview4-final",
-          "Microsoft.EntityFrameworkCore.Design": "1.0.1"
+          "Microsoft.EntityFrameworkCore.Design": "1.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.0.4"
         },
         "runtime": {
           "ShowcaseProduct.dll": {}
@@ -3841,7 +3852,7 @@
       "Microsoft.EntityFrameworkCore.Design/1.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.1",
-          "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.1",
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.4",
           "System.AppContext": "4.1.0",
           "System.Collections.NonGeneric": "4.0.1",
           "System.IO": "4.1.0",
@@ -3863,7 +3874,7 @@
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational.Design/1.0.1": {
+      "Microsoft.EntityFrameworkCore.Relational.Design/1.0.4": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "1.0.4"
         },
@@ -3879,6 +3890,15 @@
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.SqlServer.Design/1.0.4": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.0.4"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final": {
@@ -6203,15 +6223,20 @@
       "serviceable": true,
       "sha512": "sha512-QTZznchHeHszx9PEmutkcbAHQu1FLmV+5Pba+lPKUGRsrFsO846pXmMxlbe2wjDPedxuMqr1x8cO9JK99oN/uQ=="
     },
-    "Microsoft.EntityFrameworkCore.Relational.Design/1.0.1": {
+    "Microsoft.EntityFrameworkCore.Relational.Design/1.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GBN8QmrqcQo4WB4rKsPfzVaVKeHN6GSRF+eOTZWqK1vJ7T5kpG4PtxOkqOw8aZDRJbehAleD+dHYBOkngFzafA=="
+      "sha512": "sha512-KaIV9/0k0tRSesEbhKdjOJNjwPZLGhVzwhN3gf6U3xHLgRGYoGur8gSWd/Tzd86gMctFS26ofdk4+NP+H2lHNg=="
     },
     "Microsoft.EntityFrameworkCore.SqlServer/1.0.4": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Waq7+hlebCuvdaHwthP+mekaYjkswJ/mbwqdgeokOcWK1SYDHlP2jH/GXcKcLCZwnthnik7RrkS3iGc/rNveUg=="
+    },
+    "Microsoft.EntityFrameworkCore.SqlServer.Design/1.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CSZoo+9iuoBIYN/Yl8/1ggJgEVm/T8feJSjSBpBgej18S8lQt0kn43F6RBPJzHNMZeGutuR2V/gi6t++b8LUaA=="
     },
     "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final": {
       "type": "package",
