@@ -104,6 +104,7 @@ namespace ShowcaseProduct
             // Add application services.
             services.AddTransient<IEmailService, EmailSender>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IPrixRepository, PrixRepository>();
             services.AddMvc(); // default
            
         }
