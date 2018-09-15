@@ -13,7 +13,12 @@ namespace ShowcaseProduct.Models
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<BonCommande> BonCommande { get; set; }
+        public virtual DbSet<Commande> Commande { get; set; }
         public virtual DbSet<MigrationHistory> MigrationHistory { get; set; }
+        public virtual DbSet<Prix> Prix { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Relationprix> Relationprix { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -158,6 +163,40 @@ namespace ShowcaseProduct.Models
                     .HasMaxLength(256);
             });
 
+            modelBuilder.Entity<BonCommande>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.IdUser)
+                    .IsRequired()
+                    .HasMaxLength(128);
+
+                entity.HasOne(d => d.IdUserNavigation)
+                    .WithMany(p => p.BonCommande)
+                    .HasForeignKey(d => d.IdUser)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK_BonCommande_AspNetUsers");
+            });
+
+            modelBuilder.Entity<Commande>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.HasOne(d => d.IdBonCommandeNavigation)
+                    .WithMany(p => p.Commande)
+                    .HasForeignKey(d => d.IdBonCommande)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK_Commande_BonCommande");
+
+                entity.HasOne(d => d.IdProductNavigation)
+                    .WithMany(p => p.Commande)
+                    .HasForeignKey(d => d.IdProduct)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK_Commande_Product");
+            });
+
             modelBuilder.Entity<MigrationHistory>(entity =>
             {
                 entity.HasKey(e => new { e.MigrationId, e.ContextKey })
@@ -174,6 +213,45 @@ namespace ShowcaseProduct.Models
                 entity.Property(e => e.ProductVersion)
                     .IsRequired()
                     .HasMaxLength(32);
+            });
+
+            modelBuilder.Entity<Prix>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.DateFin).HasColumnType("datetime");
+
+                entity.Property(e => e.Datedebut).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Image).HasColumnType("nchar(25)");
+
+                entity.Property(e => e.Marque).HasColumnType("nchar(10)");
+
+                entity.Property(e => e.Nom)
+                    .IsRequired()
+                    .HasColumnType("nchar(10)");
+            });
+
+            modelBuilder.Entity<Relationprix>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.HasOne(d => d.IdPrixNavigation)
+                    .WithMany(p => p.Relationprix)
+                    .HasForeignKey(d => d.IdPrix)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK_Relationprix_Prix");
+
+                entity.HasOne(d => d.IdPrix1)
+                    .WithMany(p => p.Relationprix)
+                    .HasForeignKey(d => d.IdPrix)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK_Relationprix_Product");
             });
         }
     }

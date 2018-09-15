@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Identity;
 using ShowcaseProduct.Models.Account;
+using ShowcaseProduct.Repository;
 
 namespace ShowcaseProduct
 {
@@ -102,7 +103,7 @@ namespace ShowcaseProduct
 
             // Add application services.
             services.AddTransient<IEmailService, EmailSender>();
-
+            services.AddTransient<IProductRepository, ProductRepository>();
             services.AddMvc(); // default
            
         }

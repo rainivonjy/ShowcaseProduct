@@ -10,6 +10,7 @@ namespace ShowcaseProduct.Models
             AspNetUserClaims = new HashSet<AspNetUserClaims>();
             AspNetUserLogins = new HashSet<AspNetUserLogins>();
             AspNetUserRoles = new HashSet<AspNetUserRoles>();
+            BonCommande = new HashSet<BonCommande>();
         }
 
         public string Id { get; set; }
@@ -32,5 +33,6 @@ namespace ShowcaseProduct.Models
         public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
+        public virtual ICollection<BonCommande> BonCommande { get; set; }
     }
 }
