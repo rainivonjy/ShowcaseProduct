@@ -13,9 +13,11 @@ namespace ShowcaseProduct.Controllers
     public class ProductController : Controller
     {
         private IProductRepository productRepository;
-        public ProductController(IProductRepository productRepository)
+        private IPrixRepository prixRepository;
+        public ProductController(IProductRepository productRepository, IPrixRepository prixRepository)
         {
             this.productRepository = productRepository;
+            this.prixRepository = prixRepository;
         }
         // GET: /<controller>/
         public IActionResult ListProduct()
@@ -28,9 +30,50 @@ namespace ShowcaseProduct.Controllers
         {
             return View();
         }
-        // GET: /<controller>/
-        public IActionResult EditProduct()
+        [HttpPost]
+        public IActionResult AddProduct(ProductFormulaire model)
         {
+            if (ModelState.IsValid)
+            {
+                Product product = new Product();
+                product.Nom = model.Nom;
+                product.Image = model.Image;
+                product.Marque = model.Marque;
+                productRepository.SaveProduct(ref product);
+                Prix prix = new Prix();
+                prix.PrixUniraire = model.PrixUniraire;
+                prixRepository.SavePrix(ref prix);
+                Relationprix relationprix = new Relationprix();
+                relationprix.IdProduit = product.Id;
+                relationprix.IdPrix = prix.Id;
+                product.Relationprix.Add(relationprix);
+                return RedirectToAction("ListProduct", "Product");
+            }
+            return View();
+        }
+        // GET: /<controller>/
+        public IActionResult EditProduct(long id)
+        {
+            Product product = productRepository.GetProduct(id);
+            Relationprix relationprix = new Relationprix();
+            relationprix = product.Relationprix.Last();
+            Prix prix = new Prix();
+            prix = prixRepository.GetPrix(relationprix.IdPrix);
+            ProductFormulaire mode = new ProductFormulaire(id, product.Nom, product.Image, product.Marque, prix.PrixUniraire);
+            return View();
+        }
+        [HttpPost]
+        public IActionResult EditProduct(ProductFormulaire model)
+        {
+            if (ModelState.IsValid)
+            {
+                Product product = productRepository.GetProduct(model.Id);
+                product.Nom = model.Nom;
+                product.Image = model.Image;
+                product.Marque = model.Marque;
+                productRepository.UpdateProduct(ref product);
+                return RedirectToAction("ListProduct", "Product");
+            }
             return View();
         }
     }

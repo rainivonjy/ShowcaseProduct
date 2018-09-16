@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using ShowcaseProduct.Models.Account;
+using ShowcaseProduct.Models;
 
 namespace ShowcaseProduct.Models
 {

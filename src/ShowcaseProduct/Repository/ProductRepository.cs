@@ -42,14 +42,14 @@ namespace ShowcaseProduct.Repository
             return productEntity.SingleOrDefault(p => p.Id == id);
         }
 
-        public void SaveProduct(Product product)
+        public void SaveProduct(ref Product product)
         {
             context.Entry(product).State = EntityState.Added;
             context.SaveChanges();
         }
     
         
-        public void UpdateProduct(Product product)
+        public void UpdateProduct(ref Product product)
         {
             context.Entry(product).State = EntityState.Modified;
             context.SaveChanges();

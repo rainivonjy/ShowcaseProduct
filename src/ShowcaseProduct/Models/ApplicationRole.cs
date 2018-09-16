@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ShowcaseProduct.Models.Account
+namespace ShowcaseProduct.Models
 {
-    public class ApplicationRole :IdentityRole
-    { 
+    public class ApplicationRole : IdentityRole
+    {
     }
 }

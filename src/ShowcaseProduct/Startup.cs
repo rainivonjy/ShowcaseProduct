@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Identity;
-using ShowcaseProduct.Models.Account;
+using ShowcaseProduct.Models;
 using ShowcaseProduct.Repository;
 
 namespace ShowcaseProduct

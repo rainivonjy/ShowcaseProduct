@@ -33,13 +33,13 @@ namespace ShowcaseProduct.Repository
             return prixtEntity.SingleOrDefault(p => p.Id == id);
         }
 
-        public void SaveProduct(Prix prix)
+        public void SavePrix(ref Prix prix)
         {
             context.Entry(prix).State = EntityState.Added;
             context.SaveChanges();
         }
 
-        public void UpdatePrix(Prix prix)
+        public void UpdatePrix(ref Prix prix)
         {
             context.Entry(prix).State = EntityState.Modified;
             context.SaveChanges();

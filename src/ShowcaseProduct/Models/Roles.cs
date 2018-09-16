@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ShowcaseProduct.Models.Account
+namespace ShowcaseProduct.Models
 {
     public enum Roles
     {

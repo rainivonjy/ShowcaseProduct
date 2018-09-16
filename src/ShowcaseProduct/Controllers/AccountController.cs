@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ShowcaseProduct.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using ShowcaseProduct.Models.Account;
+using ShowcaseProduct.Models;
 using Microsoft.AspNetCore.Http.Authentication;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860

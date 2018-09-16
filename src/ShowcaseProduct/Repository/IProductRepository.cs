@@ -8,11 +8,11 @@ namespace ShowcaseProduct.Repository
 {
     public interface IProductRepository
     {
-        void SaveProduct(Product product);
+        void SaveProduct(ref Product product);
         IEnumerable<Product> GetAllProducts();
         List<ProductFormulaire> GetAllProductFormulaires();
         Product GetProduct(long id);
         void DeleteProduct(long id);
-        void UpdateProduct(Product student);
+        void UpdateProduct(ref Product product);
     }
 }
