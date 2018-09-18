@@ -12,8 +12,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Identity;
-using ShowcaseProduct.Models;
 using ShowcaseProduct.Repository;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace ShowcaseProduct
 {
@@ -85,7 +86,7 @@ namespace ShowcaseProduct
                 options.User.RequireUniqueEmail = true;
             });
 
-            
+
 
             /*services.ConfigureApplicationCookie(options =>
             {
@@ -101,10 +102,27 @@ namespace ShowcaseProduct
                 options.SlidingExpiration = true;
             });*/
 
+            // For Dbcontext For Application
+            services.AddDbContext<product_baseContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             // Add application services.
             services.AddTransient<IEmailService, EmailSender>();
             services.AddTransient<IProductRepository, ProductRepository>();
+
+            /*  services.AddTransient<IProductRepository, ProductRepository>((ctx) =>
+              {
+                  product_baseContext svc = new product_baseContext();
+                  //IOtherService svc = ctx.GetRequiredService<IOtherService>();
+                  return new ProductRepository(svc);
+              });*/
+            
+            services.AddTransient<IUtils, Utils>();
+            services.AddTransient<IRelationPrixRepository, RelationPrixRepository>();
             services.AddTransient<IPrixRepository, PrixRepository>();
+            services.AddTransient<IFileApplication, FileApplication>();
+            services.AddSingleton<IFileProvider>(
+                new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), AllConstants.PathFolderImage)));
             services.AddMvc(); // default
            
         }

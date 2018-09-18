@@ -9,7 +9,9 @@ namespace ShowcaseProduct.Models
         public long IdProduit { get; set; }
         public long IdPrix { get; set; }
 
+        public virtual Relationprix IdNavigation { get; set; }
+        public virtual Relationprix InverseIdNavigation { get; set; }
         public virtual Prix IdPrixNavigation { get; set; }
-        public virtual Product IdPrix1 { get; set; }
+        public virtual Product IdProduitNavigation { get; set; }
     }
 }

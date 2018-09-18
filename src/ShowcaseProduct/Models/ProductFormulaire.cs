@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,7 +9,8 @@ namespace ShowcaseProduct.Models
 {
     public class ProductFormulaire : Product
     {
-
+        [Required]
+        [Display(Name = "Price")]
         public double PrixUniraire { get; set; }
         public ProductFormulaire()
         {
@@ -26,5 +29,9 @@ namespace ShowcaseProduct.Models
         {
             return String.Concat(AllConstants.PathFolderImage, NameImage);
         }
+
+        [Required]
+        [Display(Name = "Image")]
+        public IFormFile FileImage { get; set; }
     }
 }

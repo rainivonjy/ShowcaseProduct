@@ -35,7 +35,7 @@ namespace ShowcaseProduct.Repository
 
         public void SavePrix(ref Prix prix)
         {
-            context.Entry(prix).State = EntityState.Added;
+            prixtEntity.Add(prix);
             context.SaveChanges();
         }
 

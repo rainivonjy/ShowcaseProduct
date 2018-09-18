@@ -239,7 +239,15 @@ namespace ShowcaseProduct.Models
 
             modelBuilder.Entity<Relationprix>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedOnAdd();
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.InverseIdNavigation)
+                    .HasForeignKey<Relationprix>(d => d.Id)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK_Relationprix_Relationprix");
 
                 entity.HasOne(d => d.IdPrixNavigation)
                     .WithMany(p => p.Relationprix)
@@ -247,11 +255,11 @@ namespace ShowcaseProduct.Models
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("FK_Relationprix_Prix");
 
-                entity.HasOne(d => d.IdPrix1)
+                entity.HasOne(d => d.IdProduitNavigation)
                     .WithMany(p => p.Relationprix)
-                    .HasForeignKey(d => d.IdPrix)
+                    .HasForeignKey(d => d.IdProduit)
                     .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("FK_Relationprix_Product");
+                    .HasConstraintName("FK_Relationprix_Product1");
             });
         }
     }

@@ -44,7 +44,7 @@ namespace ShowcaseProduct.Repository
 
         public void SaveProduct(ref Product product)
         {
-            context.Entry(product).State = EntityState.Added;
+            productEntity.Add(product);
             context.SaveChanges();
         }
     

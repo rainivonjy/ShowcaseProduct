@@ -20,7 +20,7 @@ namespace ShowcaseProduct.Models
 
         // All image in application;
 
-        public const string PathFolderImage = "";
+        public const string PathFolderImage = "download";
 
     }
 }

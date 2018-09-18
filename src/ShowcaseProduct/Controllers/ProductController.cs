@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ShowcaseProduct.Models;
 using ShowcaseProduct.Repository;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,11 +14,18 @@ namespace ShowcaseProduct.Controllers
     public class ProductController : Controller
     {
         private IProductRepository productRepository;
-        private IPrixRepository prixRepository;
-        public ProductController(IProductRepository productRepository, IPrixRepository prixRepository)
+        private IPrixRepository prixRepository; 
+        private IFileApplication fileApplication; 
+        private IRelationPrixRepository relationPrixRepository;
+        private IUtils utils;
+        public ProductController(IProductRepository productRepository, IPrixRepository prixRepository,
+            IFileApplication fileApplication, IRelationPrixRepository relationPrixRepository, IUtils utils)
         {
             this.productRepository = productRepository;
             this.prixRepository = prixRepository;
+            this.fileApplication = fileApplication;
+            this.relationPrixRepository = relationPrixRepository;
+            this.utils = utils;
         }
         // GET: /<controller>/
         public IActionResult ListProduct()
@@ -37,7 +45,7 @@ namespace ShowcaseProduct.Controllers
             {
                 Product product = new Product();
                 product.Nom = model.Nom;
-                product.Image = model.Image;
+                product.Image = utils.GetValueWithIndexAfterSplit('\\', 1, model.FileImage.FileName);
                 product.Marque = model.Marque;
                 productRepository.SaveProduct(ref product);
                 Prix prix = new Prix();
@@ -46,7 +54,8 @@ namespace ShowcaseProduct.Controllers
                 Relationprix relationprix = new Relationprix();
                 relationprix.IdProduit = product.Id;
                 relationprix.IdPrix = prix.Id;
-                product.Relationprix.Add(relationprix);
+                relationPrixRepository.SaveRelationPrix(relationprix);
+                fileApplication.UploadFile(model.FileImage);
                 return RedirectToAction("ListProduct", "Product");
             }
             return View();
