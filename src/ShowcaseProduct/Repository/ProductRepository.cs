@@ -28,8 +28,18 @@ namespace ShowcaseProduct.Repository
             var listProductFormulaire = (from p in context.Product
                                         join rp in context.Relationprix on p.Id equals rp.IdProduit
                                         join prix in context.Prix on rp.IdPrix equals prix.Id
-                                        select new ProductFormulaire()).ToList();
+                                        select new ProductFormulaire(p.Id, p.Nom, p.Image, p.Marque, prix.PrixUniraire)).ToList();
             return listProductFormulaire;
+        }
+        public ProductFormulaire GetProductFormulaire(long id)
+        {
+            ProductFormulaire productFormulaire = (from p in context.Product
+                                         where p.Id == id
+                                         join rp in context.Relationprix on p.Id equals rp.IdProduit
+                                         join prix in context.Prix on rp.IdPrix equals prix.Id
+                                         
+                                         select new ProductFormulaire(p.Id, p.Nom, p.Image, p.Marque, prix.PrixUniraire, prix.Id)).OrderByDescending(pf => pf.IdPrix).FirstOrDefault();
+            return productFormulaire;
         }
 
         public IEnumerable<Product> GetAllProducts()

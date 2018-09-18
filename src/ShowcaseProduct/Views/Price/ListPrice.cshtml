@@ -1,5 +1,5 @@
 ﻿@using ShowcaseProduct.Models
-@model ProductFormulaire
+@model PriceFormulaire
 @{
     ViewBag.Title = "List Product";
 }
@@ -11,13 +11,12 @@
         <div class="row">
             <ul class="collection with-header">
                 <li class="collection-header"><h4>Galaxies</h4></li>
-                @foreach (ProductFormulaire s in ViewBag.listProduct)
+                @foreach (PriceFormulaire s in ViewBag.listPrix)
                 {
                     <li class="collection-item"><a href="#!">@s.Nom</a> </li>
-                    <li class="collection-item"><a href="#!">@s.Marque</a> </li>
-                    <li class="collection-item"><a href="#!"><img src="@Url.Content(@s.Image)" /></a> </li>
+                    <li class="collection-item"><a href="#!">@s.IdProduct</a> </li>
                     <li class="collection-item"><a href="#!">@s.PrixUniraire</a> </li>
-                    <li class="collection-item"><a asp-controller="Product" asp-action="EditProduct" asp-route-id="@s.Id">Edit</a> </li>
+                    <li class="collection-item"><a asp-controller="Price" asp-action="EditPrice" asp-route-id="@s.Id">Edit</a> </li>
                 }
 
             </ul>

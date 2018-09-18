@@ -223,6 +223,7 @@ C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Program.c
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Startup.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controllers\AccountController.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controllers\HomeController.cs
+C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controllers\PriceController.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controllers\ProductController.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\AllConstants.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\ApplicationDbContext.cs
@@ -244,6 +245,7 @@ C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\IF
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\IUtils.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\LoginViewModel.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\MigrationHistory.cs
+C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\PriceFormulaire.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Prix.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Product.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\ProductFormulaire.cs

@@ -14,8 +14,8 @@ namespace ShowcaseProduct.Controllers
     public class ProductController : Controller
     {
         private IProductRepository productRepository;
-        private IPrixRepository prixRepository; 
-        private IFileApplication fileApplication; 
+        private IPrixRepository prixRepository;
+        private IFileApplication fileApplication;
         private IRelationPrixRepository relationPrixRepository;
         private IUtils utils;
         public ProductController(IProductRepository productRepository, IPrixRepository prixRepository,
@@ -63,24 +63,23 @@ namespace ShowcaseProduct.Controllers
         // GET: /<controller>/
         public IActionResult EditProduct(long id)
         {
-            Product product = productRepository.GetProduct(id);
-            Relationprix relationprix = new Relationprix();
-            relationprix = product.Relationprix.Last();
-            Prix prix = new Prix();
-            prix = prixRepository.GetPrix(relationprix.IdPrix);
-            ProductFormulaire mode = new ProductFormulaire(id, product.Nom, product.Image, product.Marque, prix.PrixUniraire);
-            return View();
+            ProductFormulaire productFormulaire = productRepository.GetProductFormulaire(id);
+            return View(productFormulaire);
         }
         [HttpPost]
         public IActionResult EditProduct(ProductFormulaire model)
         {
             if (ModelState.IsValid)
             {
-                Product product = productRepository.GetProduct(model.Id);
+                Product product = new Product();
+                product.Id = model.Id;
                 product.Nom = model.Nom;
-                product.Image = model.Image;
+                product.Image = utils.GetValueWithIndexAfterSplit('\\', 1, model.FileImage.FileName);
                 product.Marque = model.Marque;
+                product.Commande = model.Commande;
+                product.Relationprix = model.Relationprix;
                 productRepository.UpdateProduct(ref product);
+                fileApplication.UploadFile(model.FileImage);
                 return RedirectToAction("ListProduct", "Product");
             }
             return View();

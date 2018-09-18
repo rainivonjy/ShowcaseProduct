@@ -19,8 +19,8 @@ namespace ShowcaseProduct.Models
         public const string MailPasswordForAuthentificationServer = "vonjy007";
 
         // All image in application;
-
-        public const string PathFolderImage = "download";
+        public const string srcImage = "download";
+        public const string PathFolderImage = "wwwroot/download";
 
     }
 }

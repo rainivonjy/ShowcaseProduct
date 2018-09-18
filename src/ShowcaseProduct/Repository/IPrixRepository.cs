@@ -12,6 +12,8 @@ namespace ShowcaseProduct.Repository
         IEnumerable<Prix> GetAllPrix();
         Prix GetPrix(long id);
         void DeletePrix(long id);
-        void UpdatePrix(ref Prix prix);
+        void UpdatePrix(ref Prix prix); 
+        List<PriceFormulaire> GetAllPriceFormulaires();
+        PriceFormulaire GetPriceFormulaire(long id);
     }
 }

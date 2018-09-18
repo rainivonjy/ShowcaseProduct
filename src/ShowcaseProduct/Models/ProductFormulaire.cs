@@ -16,6 +16,11 @@ namespace ShowcaseProduct.Models
         {
 
         }
+        public ProductFormulaire(long Id, string Nom, string Image, string Marque, double PrixUniraire, long IdPrix)
+        :this(Id, Nom, Image, Marque, PrixUniraire)
+        {
+            this.IdPrix = IdPrix;
+        }
         public ProductFormulaire(long Id, string Nom, string Image, string Marque, double PrixUniraire)
         {
             this.Id = Id;
@@ -27,11 +32,12 @@ namespace ShowcaseProduct.Models
         }
         public string GetPath(string NameImage)
         {
-            return String.Concat(AllConstants.PathFolderImage, NameImage);
+            return String.Concat(String.Concat("~/",AllConstants.srcImage), String.Concat("/", NameImage));
         }
 
         [Required]
         [Display(Name = "Image")]
         public IFormFile FileImage { get; set; }
+        public long IdPrix { get; set; }
     }
 }

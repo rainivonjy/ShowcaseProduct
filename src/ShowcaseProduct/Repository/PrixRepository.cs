@@ -44,5 +44,22 @@ namespace ShowcaseProduct.Repository
             context.Entry(prix).State = EntityState.Modified;
             context.SaveChanges();
         }
+        public PriceFormulaire GetPriceFormulaire(long id)
+        {
+            PriceFormulaire productFormulaire = (from p in context.Prix
+                                                   where p.Id == id
+                                                   join rp in context.Relationprix on p.Id equals rp.IdPrix
+                                                   join pro in context.Product on rp.IdProduit equals pro.Id
+                                                 select new PriceFormulaire(pro.Id, pro.Nom, p.Id, p.PrixUniraire)).FirstOrDefault();
+            return productFormulaire;
+        }
+        public List<PriceFormulaire> GetAllPriceFormulaires()
+        {
+            var listProductFormulaire = (from p in context.Product
+                                         join rp in context.Relationprix on p.Id equals rp.IdProduit
+                                         join prix in context.Prix on rp.IdPrix equals prix.Id
+                                         select new PriceFormulaire(p.Id, p.Nom, prix.Id, prix.PrixUniraire)).ToList();
+            return listProductFormulaire;
+        }
     }
 }

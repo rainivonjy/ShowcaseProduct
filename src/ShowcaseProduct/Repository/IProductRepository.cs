@@ -12,6 +12,7 @@ namespace ShowcaseProduct.Repository
         IEnumerable<Product> GetAllProducts();
         List<ProductFormulaire> GetAllProductFormulaires();
         Product GetProduct(long id);
+        ProductFormulaire GetProductFormulaire(long id);
         void DeleteProduct(long id);
         void UpdateProduct(ref Product product);
     }
