@@ -1,0 +1,27 @@
+﻿@using ShowcaseProduct.Models
+@model PriceFormulaire
+@{
+    ViewBag.Title = "List Product";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <a asp-area="" asp-controller="Product" asp-action="AddProduct">Add Product</a>
+    <div class="col-md-8">
+        <div class="row">
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>Galaxies</h4></li>
+                @foreach (PriceFormulaire s in ViewBag.listPrix)
+                {
+                    <li class="collection-item"><a href="#!">@s.Nom</a> </li>
+                    <li class="collection-item"><a href="#!">@s.IdProduct</a> </li>
+                    <li class="collection-item"><a href="#!">@s.PrixUniraire</a> </li>
+                    <li class="collection-item"><a asp-controller="Price" asp-action="EditPrice" asp-route-id="@s.Id">Edit</a> </li>
+                }
+
+            </ul>
+           
+        </div>
+    </div>
+
+</div>

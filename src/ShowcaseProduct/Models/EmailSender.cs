@@ -7,6 +7,7 @@ using MailKit.Net.Smtp;
 using MimeKit;
 using MailKit.Security;
 using MailKit.Net.Imap;
+using ShowcaseProduct.Models.ConstApplication;
 
 namespace ShowcaseProduct.Models
 {

@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity;
 using ShowcaseProduct.Repository;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using ShowcaseProduct.Models.ConstApplication;
 
 namespace ShowcaseProduct
 {
@@ -116,6 +117,7 @@ namespace ShowcaseProduct
                   return new ProductRepository(svc);
               });*/
             
+            services.AddTransient<IPaypalPayement, PaypalPayement>();
             services.AddTransient<IUtils, Utils>();
             services.AddTransient<IRelationPrixRepository, RelationPrixRepository>();
             services.AddTransient<IPrixRepository, PrixRepository>();
