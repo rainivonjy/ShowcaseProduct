@@ -102,6 +102,7 @@ namespace ShowcaseProduct.Controllers
 
 
         // GET Register
+      
         public IActionResult Register()
         {
             ViewBag.Name = new SelectList(dbcontext.Roles

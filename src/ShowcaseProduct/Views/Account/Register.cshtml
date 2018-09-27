@@ -1,14 +1,13 @@
-﻿@model ShowcaseProduct.Models.Account.RegisterViewModel
+﻿@model ShowcaseProduct.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "_LayoutForm";
 }
-
-<h2>@ViewBag.Title.</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
+    <h4>Create a new account</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">

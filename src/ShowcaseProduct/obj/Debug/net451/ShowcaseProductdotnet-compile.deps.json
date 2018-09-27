@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETFramework,Version=v4.5.1/",
-    "signature": "b68526471f23c587d3773f5d34a88637906988b2"
+    "signature": "6fdec3e42847c44e86747f93f939920d7bee0d78"
   },
   "compilationOptions": {
     "defines": [
@@ -20,6 +20,7 @@
           "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics": "1.0.0",
           "Microsoft.AspNetCore.Mvc": "1.0.1",
+          "bootstrap": "4.1.0",
           "Microsoft.AspNetCore.Routing": "1.0.1",
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
@@ -45,11 +46,18 @@
           "ShowcaseProduct.exe": {}
         }
       },
+      "bootstrap/4.1.0": {
+        "dependencies": {
+          "jQuery": "3.0.0",
+          "popper.js": "1.14.0"
+        }
+      },
       "BouncyCastle/1.8.1": {
         "compile": {
           "lib/BouncyCastle.Crypto.dll": {}
         }
       },
+      "jQuery/3.0.0": {},
       "Libuv/1.9.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1"
@@ -1071,6 +1079,7 @@
           "lib/net451/PayPal.dll": {}
         }
       },
+      "popper.js/1.14.0": {},
       "Remotion.Linq/2.1.1": {
         "dependencies": {
           "System.Collections": "4.0.0.0",
@@ -1367,6 +1376,7 @@
           "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics": "1.0.0",
           "Microsoft.AspNetCore.Mvc": "1.0.1",
+          "bootstrap": "4.1.0",
           "Microsoft.AspNetCore.Routing": "1.0.1",
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
@@ -1392,11 +1402,18 @@
           "ShowcaseProduct.exe": {}
         }
       },
+      "bootstrap/4.1.0": {
+        "dependencies": {
+          "jQuery": "3.0.0",
+          "popper.js": "1.14.0"
+        }
+      },
       "BouncyCastle/1.8.1": {
         "runtime": {
           "lib/BouncyCastle.Crypto.dll": {}
         }
       },
+      "jQuery/3.0.0": {},
       "Libuv/1.9.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1"
@@ -2414,6 +2431,7 @@
           "lib/net451/PayPal.dll": {}
         }
       },
+      "popper.js/1.14.0": {},
       "Remotion.Linq/2.1.1": {
         "dependencies": {
           "System.Collections": "4.0.0.0",
@@ -2551,10 +2569,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "bootstrap/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MpThvC2aO+DVfGP76J4TBIZ23pwyIkcGp2miNvQITqjNoGwLtGfY7pRU1u33Ot/7DU20LY2Ur6ZYlM0KGtCglg=="
+    },
     "BouncyCastle/1.8.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-nH+P67LavO5EcxjKdBxFfRdfdFhivS3Xp3+0br1KcpCI8DM6ksCWy6YYZjk7XFV+VsHGtkUovwIZ/vmCp42geA=="
+    },
+    "jQuery/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xFfntV19HzCtKdJWOp/XT9PUY3SslokTDDLFJZdBug36j1XVhw1+vPQ/n7Gd5y+jdpesn5B1m1yn1qIUq57jlA=="
     },
     "Libuv/1.9.0": {
       "type": "package",
@@ -3060,6 +3088,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-4yJC9LXh37MHz7LlL973+/eWbyfbOx0jVSjw4oNEfTyUB8G/Z0NNvOKyHaengePepYEPdIE3/R0Fv0tunr0OsA=="
+    },
+    "popper.js/1.14.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SPxZdXknelgQ015wey7GMZvsVdt/SyEmHYORhEp5k/uF9MUk9DPtkn+6dR98fud2hVWJjZm9KKr474+r7WQt+A=="
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",
