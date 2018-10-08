@@ -10,6 +10,7 @@ Voici quelquest fonctionnalite qui sont en cours de developpenment actuelleneb :
 - Gestion des roles dans l'application
 - Mise en place du theme gratuit
 
-A noter que ce projet est en cours de developpement et non pour but lucratif.
+A noter que ce projet est en cours de développement mais j ai déjà pu effectuer beaucoup de tarvail que vous télécharger.
+A noter que ce projet n'est pas pour but lucratif.
 J'ai fait ce projet pour le partage de connaissance.
 
