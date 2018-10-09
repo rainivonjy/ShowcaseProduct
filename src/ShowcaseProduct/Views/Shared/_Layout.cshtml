@@ -70,17 +70,17 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="active"><a href="shop.html">Shop</a></li>
-                    <li><a href="product-details.html">Product</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Shop</a></li>
+                    <li><a asp-area="" asp-controller="Product" asp-action="ListProduct">Product</a></li>
                     <li><a href="cart.html">Cart</a></li>
                     <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-                    <li><a href="checkout.html">Login</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
                 </ul>
             </nav>
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
-                <a href="#" class="btn amado-btn mb-15">%Discount%</a>
-                <a href="#" class="btn amado-btn active">New this week</a>
+                <a href="#" id="idbtDiscountShop" class="btn amado-btn mb-15">%Discount%</a>
+                <a href="#" id="idbtNewShop" class="btn amado-btn active">New this week</a>
             </div>
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">

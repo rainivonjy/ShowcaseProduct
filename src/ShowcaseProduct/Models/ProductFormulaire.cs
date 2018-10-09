@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShowcaseProduct.Models
 {
+ 
     public class ProductFormulaire : Product
     {
         [Required]
@@ -26,15 +27,12 @@ namespace ShowcaseProduct.Models
         {
             this.Id = Id;
             this.Nom = Nom;
-            this.Image = GetPath(Image);
+            this.Image = Image;
             this.Marque = Marque;
             this.PrixUniraire = PrixUniraire;
 
         }
-        public string GetPath(string NameImage)
-        {
-            return String.Concat(String.Concat("~/",AllConstants.srcImage), String.Concat("/", NameImage));
-        }
+       
 
         [Required]
         [Display(Name = "Image")]

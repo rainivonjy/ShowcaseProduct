@@ -4,6 +4,9 @@
     ViewBag.Title = "List Product";
 }
 
+@{
+    Layout = "_LayoutForm";
+ }
 <h2>@ViewBag.Title</h2>
 <div class="row">
     <a asp-area="" asp-controller="Product" asp-action="AddProduct">Add Product</a>

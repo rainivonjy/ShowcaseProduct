@@ -15,5 +15,6 @@ namespace ShowcaseProduct.Repository
         ProductFormulaire GetProductFormulaire(long id);
         void DeleteProduct(long id);
         void UpdateProduct(ref Product product);
+        ForJsonShopProducts GetShopProductFormulaires(ref RequestShop requestShop);
     }
 }

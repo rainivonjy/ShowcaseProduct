@@ -8,6 +8,8 @@ namespace ShowcaseProduct.Models
     public interface IUtils
     {
         string GetValueWithIndexAfterSplit(char separator, int index, string text);
-      
+        string CreatePathImg(string NameImage, bool rootWeb);
+
+
     }
 }

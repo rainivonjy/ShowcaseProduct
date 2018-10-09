@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShowcaseProduct.Models.ConstApplication;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,19 @@ namespace ShowcaseProduct.Models
                 textValue = nameAfterSplit[nameAfterSplit.Count() - index];
             }
             return textValue;
+        }
+        public string CreatePathImg(string NameImage ,bool rootWeb)
+        {
+            string path = String.Empty;
+            if (rootWeb)
+            {
+                path = String.Concat(String.Concat("/", AllConstants.srcImage), String.Concat("/", NameImage));
+            }
+            else
+            {
+                path = String.Concat(String.Concat("~/", AllConstants.srcImage), String.Concat("/", NameImage));
+            }
+            return path;
         }
     }
 }

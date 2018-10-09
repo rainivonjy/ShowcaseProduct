@@ -125,8 +125,11 @@ namespace ShowcaseProduct
             services.AddSingleton<IFileProvider>(
                 new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), AllConstants.PathFolderImage)));
-            services.AddMvc(); // default
-           
+            // services.AddMvc(); // default
+            services.AddMvc();
+
+        
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -166,10 +169,6 @@ namespace ShowcaseProduct
             });
 
             app.UseStaticFiles();
-
-            
-
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

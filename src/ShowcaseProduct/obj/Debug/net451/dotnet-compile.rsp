@@ -190,6 +190,7 @@ C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controlle
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controllers\PaypalApController.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controllers\PriceController.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controllers\ProductController.cs
+C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Controllers\WebServiceApplicationController.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\ApplicationDbContext.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\ApplicationRole.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\ApplicationUser.cs
@@ -203,12 +204,15 @@ C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\As
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\BasketPaypal.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\BonCommande.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Commande.cs
+C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\CustomError.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\EmailSender.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\FileApplication.cs
+C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\ForJsonShopProducts.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\IEmailService.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\IFileApplication.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\IPaypalPayement.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\IUtils.cs
+C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\LibraryDetails.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\LoginViewModel.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\MigrationHistory.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\PaypalPayement.cs
@@ -219,9 +223,11 @@ C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Pr
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\product_baseContext.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\RegisterViewModel.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Relationprix.cs
+C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\RequestShop.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Roles.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\Utils.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\ConstApplication\AllConstants.cs
+C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Models\ConstApplication\Status.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Repository\IPrixRepository.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Repository\IProductRepository.cs
 C:\Dev\Aspnet\Core\ShowcaseProduct\ShowcaseProduct\src\ShowcaseProduct\Repository\IRelationPrixRepository.cs

@@ -3,51 +3,46 @@
     ViewBag.Title = "Register";
     Layout = "_LayoutForm";
 }
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="checkout_details_area mt-50 clearfix">
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
+                    <div class="cart-title">
+                        <h2>Create a new account</h2>
+                    </div>
+                     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                     {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "User Name" })
+                            </div>
+                            <div class="col-12 mb-3">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "e-mail" })
+                            </div>
+                            <div class="col-12 mb-3">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password",  })
+                            </div>
+                            <div class="col-12 mb-3">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "ConfirmPassword" })
+                                
+                             </div>
+                            <div class="col-12 mb-3">
+                                @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, "", new { @class = "textbox w-100" })
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="submit" class="btn amado-btn w-100" value="Register" />
+                                
+                            </div>
+                        </div>
+                     }
+                  
+                </div>
+            </div>
 
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserRoles, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @*@Html.DropDownList("Name")*@
-            @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, " ")
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+</div>

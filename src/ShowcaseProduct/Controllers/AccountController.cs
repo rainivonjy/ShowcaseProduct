@@ -66,7 +66,23 @@ namespace ShowcaseProduct.Controllers
             //await _userInManager.AddLoginAsync(aUserYoullHaveToCreate, info);        
             return Redirect("~/");
         }
-
+        [HttpPost]
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await _signManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
+            if (result.Succeeded)
+            {
+                RedirectToAction("Index","Home");
+            }
+            ModelState.AddModelError("", "Invalid login attempt.");
+            return View(model);
+        }
 
         // GET Login
         public IActionResult Login()
