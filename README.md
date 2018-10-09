@@ -12,7 +12,7 @@ Technologies et outil sur ce projet:
 - Boostrap 4
 - Thème gratuit
 
-Voici quelquest fonctionnalite qui sont en cours de developpenment actuelleneb :
+Voici quelques fonctionnalite qui sont en cours de développement :
 
 - Mise en place d'authentification  dans l'application.
 - Gestion des produits
