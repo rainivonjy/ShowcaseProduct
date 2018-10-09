@@ -7,6 +7,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ShowcaseProduct.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Identity;
+using ShowcaseProduct.Repository;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using ShowcaseProduct.Models.ConstApplication;
 
 namespace ShowcaseProduct
 {
@@ -28,15 +37,99 @@ namespace ShowcaseProduct
             Configuration = builder.Build();
         }
 
+
+       
+
+
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddApplicationInsightsTelemetry(Configuration);
+            services.AddApplicationInsightsTelemetry(Configuration); //defautl
 
+             services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+
+          /*  services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = false;
+            });*/
+
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+
+
+
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings
+                //options.Password.RequireDigit = true;
+                //options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                //options.Password.RequiredUniqueChars = 6;
+
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                //options.Lockout.MaxFailedAccessAttempts = 10;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings
+                options.User.RequireUniqueEmail = true;
+            });
+
+
+
+            /*services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                // If the LoginPath isn't set, ASP.NET Core defaults 
+                // the path to /Account/Login.
+                options.LoginPath = "/Account/Login";
+                // If the AccessDeniedPath isn't set, ASP.NET Core defaults 
+                // the path to /Account/AccessDenied.
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });*/
+
+            // For Dbcontext For Application
+            services.AddDbContext<product_baseContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            // Add application services.
+            services.AddTransient<IEmailService, EmailSender>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+
+            /*  services.AddTransient<IProductRepository, ProductRepository>((ctx) =>
+              {
+                  product_baseContext svc = new product_baseContext();
+                  //IOtherService svc = ctx.GetRequiredService<IOtherService>();
+                  return new ProductRepository(svc);
+              });*/
+            
+            services.AddTransient<IPaypalPayement, PaypalPayement>();
+            services.AddTransient<IUtils, Utils>();
+            services.AddTransient<IRelationPrixRepository, RelationPrixRepository>();
+            services.AddTransient<IPrixRepository, PrixRepository>();
+            services.AddTransient<IFileApplication, FileApplication>();
+            services.AddSingleton<IFileProvider>(
+                new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), AllConstants.PathFolderImage)));
+            // services.AddMvc(); // default
             services.AddMvc();
+
+        
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,9 +137,9 @@ namespace ShowcaseProduct
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+            
             app.UseApplicationInsightsRequestTelemetry();
-
+          
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -56,11 +149,26 @@ namespace ShowcaseProduct
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseIdentity();
             app.UseApplicationInsightsExceptionTelemetry();
 
-            app.UseStaticFiles();
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+           
+            AutomaticChallenge = true,
+            AuthenticationScheme = "ApplicationCookie",
+                AutomaticAuthenticate = true
+            });
 
+            app.UseFacebookAuthentication(new FacebookOptions
+            {
+                AuthenticationScheme = "Facebook",
+                AppId = "325309374709141",
+                AppSecret = "89d4584f99acc154af4a9514782a48db",
+                SignInScheme = "ApplicationCookie"
+            });
+
+            app.UseStaticFiles();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -1,0 +1,47 @@
+﻿@using ShowcaseProduct.Models
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Use a local account to log in.";
+    Layout = "_LayoutForm";
+}
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-title">
+                        <h2>@ViewData["Title"]</h2>
+                    </div>
+                   @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                   {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "User Name" })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-12 mb-3">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-12 mb-3">
+                                 <div class="checkbox">
+                                     @Html.CheckBoxFor(m => m.RememberMe, new {  })
+                                     @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="submit" class="btn amado-btn w-100" value="Login" />
+
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
