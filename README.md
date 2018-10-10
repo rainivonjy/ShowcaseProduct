@@ -12,15 +12,15 @@ Technologies et outil sur ce projet:
 - Boostrap 4
 - Thème gratuit
 
-Voici quelques fonctionnalite qui sont en cours de développement :
+Voici quelques fonctionnalité qui sont en cours de développement :
 
 - Mise en place d'authentification  dans l'application.
 - Gestion des produits
 - Gestion des paniers
 - Mise en place du payement en ligne (Paypal,Visa et mastercard)
 - Gestiond des utilisateurs
-- Gestion des roles dans l'application
-- Mise en place du theme gratuit
+- Gestion des rôles dans l'application
+- Mise en place du thème gratuit
 
 A noter que ce projet est en cours de développement mais j ai déjà pu effectuer beaucoup de travail que vous pouvez télécharger.
 Ce projet n'est pas pour but lucratif. J'ai fait ce projet pour le partage de connaissance et d'expérience.
