@@ -4,7 +4,7 @@ Technologies et outil sur ce projet:
 
 - C#
 - Visual Studio 2015
-- Asp net cor 1.0.1
+- Asp net core 1.0.1
 - SQL Server 2012
 - CSS
 - JQuery
